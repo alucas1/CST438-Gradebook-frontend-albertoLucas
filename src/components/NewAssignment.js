@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel'
 
 import styles from "./NewAssignment.module.css"
 import {SERVER_URL} from '../constants.js'
@@ -23,16 +21,15 @@ export default function NewAssignment(props) {
 
     const [formData, setFormData] = React.useState({
         dueDate: year + '-' + month + '-' + day,
-        name: "",
-        needsGrading: true,
-        courseId: "",
+        name: "New Assignment",
+        courseId: ""
     })
 
     function handleChange(event) {
-        const {name, value, type, checked} = event.target;
+        const {name, value} = event.target;
         setFormData(prevFormData => ({
             ...prevFormData,
-            [name]: type === "checkbox" ? checked : value
+            [name]: value
         }));
 
     }
@@ -86,18 +83,6 @@ export default function NewAssignment(props) {
                         shrink: true,
                     }}
                     onChange={handleChange}
-                />
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={formData.needsGrading}
-                            onChange={handleChange.toString()}
-                            name="needsGrading"
-                            color="primary"
-                        />
-                    }
-                    label="Needs Grading"
-                    className={styles.needsGradingCheckbox}
                 />
                 <div className={styles.buttonsContainer}>
                         <Button variant="outlined" color="primary" style={{margin: 10}} type="submit">
