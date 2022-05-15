@@ -90,7 +90,7 @@ export default function NewAssignment(props) {
                         </Button>
                     <Link to="/" style={{textDecoration: 'none'}}>
                         <Button variant="outlined" color="primary" style={{margin: 10}}>
-                            Cancel
+                            Back
                         </Button>
                     </Link>
                 </div>
