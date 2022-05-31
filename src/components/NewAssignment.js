@@ -85,17 +85,17 @@ export default function NewAssignment(props) {
                     onChange={handleChange}
                 />
                 <div className={styles.buttonsContainer}>
-                        <Button variant="outlined" color="primary" style={{margin: 10}} type="submit">
+                        <Button id="SubmitAssig" variant="outlined" color="primary" style={{margin: 10}} type="submit">
                             Submit
                         </Button>
                     <Link to="/" style={{textDecoration: 'none'}}>
-                        <Button variant="outlined" color="primary" style={{margin: 10}}>
+                        <Button id="Back" variant="outlined" color="primary" style={{margin: 10}}>
                             Back
                         </Button>
                     </Link>
                 </div>
             </form>
-            <ToastContainer autoClose={2500}/>
+            <ToastContainer autoClose={1500}/>
         </div>
     )
 }
