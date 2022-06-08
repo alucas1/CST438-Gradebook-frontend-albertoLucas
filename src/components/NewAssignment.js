@@ -9,6 +9,8 @@ import {SERVER_URL} from '../constants.js'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Cookies from 'js-cookie';
+
 export default function NewAssignment(props) {
     var today = new Date();
     var month = today.getMonth()+1;
@@ -40,8 +42,13 @@ export default function NewAssignment(props) {
             assignment_name: formData.name,
             due_date: formData.dueDate
         })
-
-        fetch(queryURL, {method: 'POST'})
+        const token = Cookies.get('XSRF-TOKEN');
+        fetch(queryURL, 
+            {
+            method: 'POST',      
+            headers: { 'X-XSRF-TOKEN': token },
+            credentials: 'include'
+        })
         .then(res => {
             console.log(res)
             if(res.status === 200) {
@@ -88,7 +95,7 @@ export default function NewAssignment(props) {
                         <Button id="SubmitAssig" variant="outlined" color="primary" style={{margin: 10}} type="submit">
                             Submit
                         </Button>
-                    <Link to="/" style={{textDecoration: 'none'}}>
+                    <Link to="/assignment" style={{textDecoration: 'none'}}>
                         <Button id="Back" variant="outlined" color="primary" style={{margin: 10}}>
                             Back
                         </Button>

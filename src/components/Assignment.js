@@ -28,6 +28,7 @@ class Assignment extends React.Component {
     fetch(`${SERVER_URL}/gradebook`, {
       method: "GET",
       headers: { "X-XSRF-TOKEN": token },
+      credentials: 'include'
     })
       .then((response) => response.json())
       .then((responseData) => {
@@ -79,7 +80,7 @@ class Assignment extends React.Component {
     const assignmentSelected = this.state.assignments[this.state.selected];
     return (
       <div align="left">
-        <h4>Assignment(s) ready to grade: </h4>
+        <h4>&emsp;Instructor View - Assignment(s) ready to grade: </h4>
         <div style={{ height: 450, width: "100%", align: "left" }}>
           <DataGrid rows={this.state.assignments} columns={columns} />
         </div>
