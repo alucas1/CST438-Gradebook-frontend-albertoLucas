@@ -80,7 +80,7 @@ class Assignment extends React.Component {
     const assignmentSelected = this.state.assignments[this.state.selected];
     return (
       <div align="left">
-        <h4>&emsp;Instructor View - Assignment(s) ready to grade: </h4>
+        <h4>&emsp;Student View - Assignment(s): </h4>
         <div style={{ height: 450, width: "100%", align: "left" }}>
           <DataGrid rows={this.state.assignments} columns={columns} />
         </div>
@@ -92,14 +92,8 @@ class Assignment extends React.Component {
           disabled={this.state.assignments.length === 0}
           style={{ margin: 10 }}
         >
-          Grade
+          Grades
         </Button>
-        <Link to="/newassignment" style={{ textDecoration: "none" }}>
-          <Button id="AddAssig" variant="contained" color="primary">
-            Add Assignment
-          </Button>
-        </Link>
-        <ToastContainer autoClose={1500} />
       </div>
     );
   }
